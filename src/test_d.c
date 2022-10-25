@@ -1,31 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test_c.c                                           :+:      :+:    :+:   */
+/*   test_d.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: thugueno <thugueno@student.42angoulem      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 17:32:41 by thugueno          #+#    #+#             */
-/*   Updated: 2022/10/25 20:48:06 by thugueno         ###   ########.fr       */
+/*   Updated: 2022/10/25 20:48:42 by thugueno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf-unicorn.h"
 
-void	test_c(void)
+void	test_d(void)
 {
-	category("c");
-	TEST(1, "%c", '0');
-	TEST(2, "%c", 0);
-	TEST(3, "%c %c", '0', '1');
-	TEST(4, "%c %c %c", '1', 0, '2');
-	TEST(5, "%c %c %c", 0, '1', '2');
-	TEST(6, "%c %c %c", '1', 0, 0);
+	category("d");
+	TEST(1, "%d", 42);
+	TEST(2, "%d", 0);
+	TEST(3, "%d %d", INT_MIN, INT_MAX);
+	TEST(4, "%d %d %d", -42, 0, 42);
+	TEST(5, "%d %d %d", 0, 0, 0);
 	end_category();
 }
 
 int	main(void)
 {
-	test_c();
+	test_d();
 	return (0);
 }

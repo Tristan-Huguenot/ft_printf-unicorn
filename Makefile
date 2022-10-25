@@ -6,20 +6,25 @@
 #    By: thugueno <thugueno@student.42angoulem      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/25 17:29:15 by thugueno          #+#    #+#              #
-#    Updated: 2022/10/25 18:44:32 by thugueno         ###   ########.fr        #
+#    Updated: 2022/10/25 20:57:37 by thugueno         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		=	ft_printf-unicorn
 
-USER_PATH	=	../ft_printf
+USER_PATH	=	../ft_printf/
 
 USER_LIB	=	libftprintf.a
 
 USER_INC	=	${addprefix -I, ${shell find ${USER_PATH} -regex ".*/.*\.h" | grep -oh ".*\/"}}
 
 SRC			=	src/test_c.c	\
-				src/utils.c		\
+				src/test_d.c	\
+				src/test_i.c	\
+
+SRC_P		=	src/
+
+UTILS		=	src/utils.c		\
 
 OBJ			=	${SRC:.c=.o}
 
@@ -31,16 +36,20 @@ INCLUDE		=	-L${USER_PATH} -l${USER_LIB:lib%.a=%} -Iinclude/ ${USER_INC}
 
 RM			=	rm -f
 
-.c.o:		
-			${CC} ${CFLAGS} ${INCLUDE} -c $< -o ${<:.c=.o}
+MANDATORY	=	c s p d i u x upperx percent mix
 
-${NAME}:	libft ${OBJ}
-			${CC} ${CFLAGS} ${OBJ} ${INCLUDE} -o ${NAME}
+.c.o:		
+			@${CC} ${CFLAGS} ${INCLUDE} -c $< -o ${<:.c=.o}
+
+all:		${MANDATORY}
+
+${MANDATORY}: %:	libft ${OBJ}
+			@${CC} ${CFLAGS} ${UTILS} ${SRC_P}test_$*.o ${INCLUDE} -o ${NAME} && ./${NAME} && ${RM} ${NAME}
+
+m:	${MANDATORY}
 
 libft:
-			make -C ${USER_PATH}
-
-all:		${NAME}
+			@make -Cs ${USER_PATH}
 
 clean:
 			${RM} ${OBJ}
@@ -50,4 +59,4 @@ fclean:		clean
 
 re:			fclean all
 
-.PHONY:	all clean fclean re
+.PHONY:	all libft clean fclean re
