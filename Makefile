@@ -6,7 +6,7 @@
 #    By: thugueno <thugueno@student.42angoulem      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/25 17:29:15 by thugueno          #+#    #+#              #
-#    Updated: 2022/10/25 20:57:37 by thugueno         ###   ########.fr        #
+#    Updated: 2022/10/25 21:04:02 by thugueno         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,12 +44,12 @@ MANDATORY	=	c s p d i u x upperx percent mix
 all:		${MANDATORY}
 
 ${MANDATORY}: %:	libft ${OBJ}
-			@${CC} ${CFLAGS} ${UTILS} ${SRC_P}test_$*.o ${INCLUDE} -o ${NAME} && ./${NAME} && ${RM} ${NAME}
+			@${CC} ${CFLAGS} ${UTILS} ${SRC_P}test_$*.o ${INCLUDE} -o $* && ./$* 
 
 m:	${MANDATORY}
 
 libft:
-			@make -Cs ${USER_PATH}
+			@make --silent -C ${USER_PATH}
 
 clean:
 			${RM} ${OBJ}
@@ -59,4 +59,4 @@ fclean:		clean
 
 re:			fclean all
 
-.PHONY:	all libft clean fclean re
+.PHONY:	all c s p d i u x upperx mix libft clean fclean re
