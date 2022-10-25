@@ -6,7 +6,7 @@
 #    By: thugueno <thugueno@student.42angoulem      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/25 17:29:15 by thugueno          #+#    #+#              #
-#    Updated: 2022/10/25 21:04:02 by thugueno         ###   ########.fr        #
+#    Updated: 2022/10/26 00:49:14 by thugueno         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,7 +44,7 @@ MANDATORY	=	c s p d i u x upperx percent mix
 all:		${MANDATORY}
 
 ${MANDATORY}: %:	libft ${OBJ}
-			@${CC} ${CFLAGS} ${UTILS} ${SRC_P}test_$*.o ${INCLUDE} -o $* && ./$* 
+			@${CC} ${CFLAGS} ${UTILS} ${SRC_P}test_$*.o ${INCLUDE} -o $* && ./$* && ${RM} $*
 
 m:	${MANDATORY}
 
