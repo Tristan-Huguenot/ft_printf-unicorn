@@ -6,7 +6,7 @@
 #    By: thugueno <thugueno@student.42angoulem      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/25 17:29:15 by thugueno          #+#    #+#              #
-#    Updated: 2022/10/26 17:16:05 by thugueno         ###   ########.fr        #
+#    Updated: 2022/10/26 17:22:17 by thugueno         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,6 +37,9 @@ B_SRC		=	src/test_width.c	\
 				src/test_space.c	\
 				src/test_plus.c		\
 
+H_SRC		=	src/test_combined.c	\
+				src/test_hardcore.c	\
+
 SRC_P		=	src/
 
 UTILS		=	src/utils.c		\
@@ -44,6 +47,8 @@ UTILS		=	src/utils.c		\
 OBJ			=	${SRC:.c=.o}
 
 B_OBJ		=	${B_SRC:.c=.o}
+
+H_OBJ		=	${H_SRC:.c=.o}
 
 CC			=	gcc
 
@@ -57,20 +62,27 @@ MANDATORY	=	c s p d i u x upperx percent mix
 
 BONUS		=	width minus zero dot sharp space plus
 
+HARD		=	combined hardcore
+
 .c.o:		
 			@${CC} ${CFLAGS} ${INCLUDE} -c $< -o ${<:.c=.o}
 
-all:		${MANDATORY}
+all:		${MANDATORY} ${BONUS} ${HARD}
 
 ${MANDATORY}: %:	ft_printf ${OBJ}
 			@${CC} ${CFLAGS} ${UTILS} ${SRC_P}test_$*.o ${INCLUDE} -o $* && valgrind ./$* && ${RM} $*
 
 m:			${MANDATORY}
 
-${BONUS}: %:		ft_printf_bonus ${OBJ} ${B_OBJ}
+${BONUS}: %:		ft_printf_bonus ${B_OBJ}
 			@${CC} ${CFLAGS} ${UTILS} ${SRC_P}test_$*.o ${INCLUDE} -o $* && valgrind ./$* && ${RM} $*
 
 b:			${BONUS}
+
+${HARD}: %:			ft_printf_bonus ${H_OBJ}
+			@${CC} ${CFLAGS} ${UTILS} ${SRC_P}test_$*.o ${INCLUDE} -o $* && valgrind ./$* && ${RM} $*
+
+h:			${HARD}
 
 ft_printf:
 			@make --silent -C ${USER_PATH}
@@ -79,7 +91,7 @@ ft_printf_bonus:
 			@make bonus --silent -C ${USER_PATH}
 
 clean:
-			${RM} ${OBJ} ${B_OBJ}
+			${RM} ${OBJ} ${B_OBJ} ${H_OBJ}
 			@make clean --silent -C ${USER_PATH}
 
 fclean:		clean
@@ -88,4 +100,4 @@ fclean:		clean
 
 re:			fclean all
 
-.PHONY:	all c s p d i u x upperx mix libft clean fclean re
+.PHONY:	all c s p d i u x upperx mix minus zero dot sharp space plus combined hardcore libft clean fclean re
