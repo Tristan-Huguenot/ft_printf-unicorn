@@ -6,7 +6,7 @@
 #    By: thugueno <thugueno@student.42angoulem      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/25 17:29:15 by thugueno          #+#    #+#              #
-#    Updated: 2022/10/26 13:59:48 by thugueno         ###   ########.fr        #
+#    Updated: 2022/10/26 17:16:05 by thugueno         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,6 +31,9 @@ SRC			=	src/test_c.c		\
 
 B_SRC		=	src/test_width.c	\
 				src/test_minus.c	\
+				src/test_zero.c		\
+				src/test_dot.c		\
+				src/test_sharp.c	\
 				src/test_space.c	\
 				src/test_plus.c		\
 
