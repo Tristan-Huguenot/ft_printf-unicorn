@@ -6,7 +6,7 @@
 #    By: thugueno <thugueno@student.42angoulem      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/25 17:29:15 by thugueno          #+#    #+#              #
-#    Updated: 2022/10/26 17:22:17 by thugueno         ###   ########.fr        #
+#    Updated: 2022/10/26 17:28:38 by thugueno         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,8 @@ USER_LIB	=	libftprintf.a
 
 USER_INC	=	${addprefix -I, ${shell find ${USER_PATH} -regex ".*/.*\.h" | grep -oh ".*\/"}}
 
-SRC			=	src/test_c.c		\
+SRC			=	src/test_null.c		\
+				src/test_c.c		\
 				src/test_s.c		\
 				src/test_p.c		\
 				src/test_d.c		\
@@ -58,7 +59,7 @@ INCLUDE		=	-L${USER_PATH} -l${USER_LIB:lib%.a=%} -Iinclude/ ${USER_INC}
 
 RM			=	rm -f
 
-MANDATORY	=	c s p d i u x upperx percent mix
+MANDATORY	=	null c s p d i u x upperx percent mix
 
 BONUS		=	width minus zero dot sharp space plus
 
