@@ -6,7 +6,7 @@
 #    By: thugueno <thugueno@student.42angoulem      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/25 17:29:15 by thugueno          #+#    #+#              #
-#    Updated: 2022/10/26 17:28:38 by thugueno         ###   ########.fr        #
+#    Updated: 2022/10/26 21:04:59 by thugueno         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,7 +39,6 @@ B_SRC		=	src/test_width.c	\
 				src/test_plus.c		\
 
 H_SRC		=	src/test_combined.c	\
-				src/test_hardcore.c	\
 
 SRC_P		=	src/
 
@@ -63,7 +62,7 @@ MANDATORY	=	null c s p d i u x upperx percent mix
 
 BONUS		=	width minus zero dot sharp space plus
 
-HARD		=	combined hardcore
+HARD		=	combined
 
 .c.o:		
 			@${CC} ${CFLAGS} ${INCLUDE} -c $< -o ${<:.c=.o}
@@ -101,4 +100,4 @@ fclean:		clean
 
 re:			fclean all
 
-.PHONY:	all c s p d i u x upperx mix minus zero dot sharp space plus combined hardcore libft clean fclean re
+.PHONY:	all c s p d i u x upperx mix minus zero dot sharp space plus combined libft clean fclean re
