@@ -6,7 +6,7 @@
 /*   By: thugueno <thugueno@student.42angoulem      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 17:48:54 by thugueno          #+#    #+#             */
-/*   Updated: 2022/10/25 20:25:19 by thugueno         ###   ########.fr       */
+/*   Updated: 2022/10/26 10:40:39 by thugueno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,7 @@
 # define TEST(n, string, ...) printf("\n\n\t[test - %d]\n", n); printf("\n-->printf:\n\n");  PRINT(printf(string, __VA_ARGS__)); printf("\n-->ft_printf:\n\n"); PRINT(ft_printf(string, __VA_ARGS__));
 
 void	category(char *s);
+void	sub_category(char *s);
 void	end_category(void);
-void	test_c(void);
-void	test_d(void);
 
 #endif

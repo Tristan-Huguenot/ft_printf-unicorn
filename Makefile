@@ -6,7 +6,7 @@
 #    By: thugueno <thugueno@student.42angoulem      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/25 17:29:15 by thugueno          #+#    #+#              #
-#    Updated: 2022/10/26 01:45:07 by thugueno         ###   ########.fr        #
+#    Updated: 2022/10/26 13:59:48 by thugueno         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,11 +29,18 @@ SRC			=	src/test_c.c		\
 				src/test_percent.c	\
 				src/test_mix.c		\
 
+B_SRC		=	src/test_width.c	\
+				src/test_minus.c	\
+				src/test_space.c	\
+				src/test_plus.c		\
+
 SRC_P		=	src/
 
 UTILS		=	src/utils.c		\
 
 OBJ			=	${SRC:.c=.o}
+
+B_OBJ		=	${B_SRC:.c=.o}
 
 CC			=	gcc
 
@@ -45,21 +52,31 @@ RM			=	rm -f
 
 MANDATORY	=	c s p d i u x upperx percent mix
 
+BONUS		=	width minus zero dot sharp space plus
+
 .c.o:		
 			@${CC} ${CFLAGS} ${INCLUDE} -c $< -o ${<:.c=.o}
 
 all:		${MANDATORY}
 
-${MANDATORY}: %:	libft ${OBJ}
-			@${CC} ${CFLAGS} ${UTILS} ${SRC_P}test_$*.o ${INCLUDE} -o $* && ./$* && ${RM} $*
+${MANDATORY}: %:	ft_printf ${OBJ}
+			@${CC} ${CFLAGS} ${UTILS} ${SRC_P}test_$*.o ${INCLUDE} -o $* && valgrind ./$* && ${RM} $*
 
-m:	${MANDATORY}
+m:			${MANDATORY}
 
-libft:
+${BONUS}: %:		ft_printf_bonus ${OBJ} ${B_OBJ}
+			@${CC} ${CFLAGS} ${UTILS} ${SRC_P}test_$*.o ${INCLUDE} -o $* && valgrind ./$* && ${RM} $*
+
+b:			${BONUS}
+
+ft_printf:
 			@make --silent -C ${USER_PATH}
 
+ft_printf_bonus:
+			@make bonus --silent -C ${USER_PATH}
+
 clean:
-			${RM} ${OBJ}
+			${RM} ${OBJ} ${B_OBJ}
 			@make clean --silent -C ${USER_PATH}
 
 fclean:		clean
