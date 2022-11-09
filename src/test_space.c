@@ -6,37 +6,11 @@
 /*   By: thugueno <thugueno@student.42angoulem      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 17:32:41 by thugueno          #+#    #+#             */
-/*   Updated: 2022/10/26 13:51:59 by thugueno         ###   ########.fr       */
+/*   Updated: 2022/10/31 15:34:30 by thugueno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf-unicorn.h"
-
-static void	test_s(void)
-{
-	char	*str = "Hello World !";
-
-	sub_category("s");
-	TEST(1, "% s", str);
-	TEST(2, "% s % s ", str, "");
-	TEST(3, "% s % s", NULL, "");
-	TEST(4, "% s % s", "", "");
-	TEST(5, "% s % s", NULL, NULL);
-	end_category();
-}
-
-
-static void	test_p(void)
-{
-	char	*str = "Hello World !";
-
-	sub_category("p");
-	TEST(1, "% p", str);
-	TEST(2, "% p", 42);
-	TEST(3, "% p", NULL);
-	TEST(4, "% p", 0);
-	end_category();
-}
 
 static void	test_d(void)
 {
@@ -65,8 +39,6 @@ static void	test_i(void)
 int	main(void)
 {
 	category("space");
-	test_s();
-	test_p();
 	test_d();
 	test_i();
 	return (0);

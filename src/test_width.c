@@ -6,7 +6,7 @@
 /*   By: thugueno <thugueno@student.42angoulem      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 17:32:41 by thugueno          #+#    #+#             */
-/*   Updated: 2022/10/26 13:46:31 by thugueno         ###   ########.fr       */
+/*   Updated: 2022/10/31 15:28:54 by thugueno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,15 @@ static void	test_c(void)
 static void	test_s(void)
 {
 	char	*str = "Hello World !";
+	char	*null = NULL;
 
 	sub_category("s");
 	TEST(1, "%13s", str);
 	TEST(2, "%10s", "");
 	TEST(3, "%20s", str);
 	TEST(4, "%2s", "");
-	TEST(4, "%9s", NULL);
+	TEST(5, "%9s", null);
+	TEST(6, "%2s", null);
 	end_category();
 }
 
@@ -43,7 +45,7 @@ static void	test_p(void)
 	TEST(1, "%15p", str);
 	TEST(2, "%20p", str);
 	TEST(3, "%7p", NULL);
-	TEST(4, "%10p", 0);
+	TEST(4, "%10p", (void *)0);
 	end_category();
 }
 

@@ -6,7 +6,7 @@
 /*   By: thugueno <thugueno@student.42angoulem      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 17:32:41 by thugueno          #+#    #+#             */
-/*   Updated: 2022/10/26 16:56:37 by thugueno         ###   ########.fr       */
+/*   Updated: 2022/10/31 15:23:34 by thugueno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@ void	test_p(void)
 	TEST(3, "%p %p", str, NULL);
 	TEST(4, "%p %p", ptr, NULL);
 	TEST(5, "%p", NULL);
-	TEST(6, "%p", LONG_MAX);
-	TEST(7, "%p", LONG_MIN);
-	TEST(8, "%p", 42);
+	TEST(6, "%p", (void *)LONG_MAX);
+	TEST(7, "%p", (void *)LONG_MIN);
+	TEST(8, "%p", (void *)42);
 	free(ptr);
 	end_category();
 }

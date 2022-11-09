@@ -6,7 +6,7 @@
 #    By: thugueno <thugueno@student.42angoulem      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/25 17:29:15 by thugueno          #+#    #+#              #
-#    Updated: 2022/10/26 21:04:59 by thugueno         ###   ########.fr        #
+#    Updated: 2022/11/09 12:59:47 by thugueno         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,8 +18,7 @@ USER_LIB	=	libftprintf.a
 
 USER_INC	=	${addprefix -I, ${shell find ${USER_PATH} -regex ".*/.*\.h" | grep -oh ".*\/"}}
 
-SRC			=	src/test_null.c		\
-				src/test_c.c		\
+SRC			=	src/test_c.c		\
 				src/test_s.c		\
 				src/test_p.c		\
 				src/test_d.c		\
@@ -38,8 +37,6 @@ B_SRC		=	src/test_width.c	\
 				src/test_space.c	\
 				src/test_plus.c		\
 
-H_SRC		=	src/test_combined.c	\
-
 SRC_P		=	src/
 
 UTILS		=	src/utils.c		\
@@ -50,19 +47,17 @@ B_OBJ		=	${B_SRC:.c=.o}
 
 H_OBJ		=	${H_SRC:.c=.o}
 
-CC			=	gcc
+CC			=	clang
 
-CFLAGS		=	-Wall -Wformat=0
+CFLAGS		=	-Wall -Wextra -Werror
 
 INCLUDE		=	-L${USER_PATH} -l${USER_LIB:lib%.a=%} -Iinclude/ ${USER_INC}
 
 RM			=	rm -f
 
-MANDATORY	=	null c s p d i u x upperx percent mix
+MANDATORY	=	c s p d i u x upperx percent mix
 
 BONUS		=	width minus zero dot sharp space plus
-
-HARD		=	combined
 
 .c.o:		
 			@${CC} ${CFLAGS} ${INCLUDE} -c $< -o ${<:.c=.o}
@@ -78,11 +73,6 @@ ${BONUS}: %:		ft_printf_bonus ${B_OBJ}
 			@${CC} ${CFLAGS} ${UTILS} ${SRC_P}test_$*.o ${INCLUDE} -o $* && valgrind ./$* && ${RM} $*
 
 b:			${BONUS}
-
-${HARD}: %:			ft_printf_bonus ${H_OBJ}
-			@${CC} ${CFLAGS} ${UTILS} ${SRC_P}test_$*.o ${INCLUDE} -o $* && valgrind ./$* && ${RM} $*
-
-h:			${HARD}
 
 ft_printf:
 			@make --silent -C ${USER_PATH}
@@ -100,4 +90,4 @@ fclean:		clean
 
 re:			fclean all
 
-.PHONY:	all c s p d i u x upperx mix minus zero dot sharp space plus combined libft clean fclean re
+.PHONY:	all c s p d i u x upperx mix minus zero dot sharp space plus libft clean fclean re

@@ -6,7 +6,7 @@
 /*   By: thugueno <thugueno@student.42angoulem      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 17:32:41 by thugueno          #+#    #+#             */
-/*   Updated: 2022/10/26 01:14:19 by thugueno         ###   ########.fr       */
+/*   Updated: 2022/10/31 15:24:42 by thugueno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ void	test_x(void)
 	TEST(5, "%x %x", 90, -90);
 	TEST(6, " %x ", INT_MIN);
 	TEST(7, " %x ", INT_MAX);
-	TEST(8, " %x ", LONG_MAX);
-	TEST(9, " %x ", LONG_MIN);
+	TEST(8, " %x ", (unsigned int)LONG_MAX);
+	TEST(9, " %x ", (unsigned int)LONG_MIN);
 	end_category();
 }
 

@@ -6,23 +6,11 @@
 /*   By: thugueno <thugueno@student.42angoulem      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 17:32:41 by thugueno          #+#    #+#             */
-/*   Updated: 2022/10/26 17:09:20 by thugueno         ###   ########.fr       */
+/*   Updated: 2022/10/31 15:31:40 by thugueno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf-unicorn.h"
-
-static void	test_p(void)
-{
-	char	*str = "Hello World !";
-
-	sub_category("p");
-	TEST(1, "%015p", str);
-	TEST(2, "%020p", str);
-	TEST(3, "%07p", NULL);
-	TEST(4, "%010p", 0);
-	end_category();
-}
 
 static void	test_d(void)
 {
@@ -86,7 +74,6 @@ static void	test_upperx(void)
 int	main(void)
 {
 	category("zero");
-	test_p();
 	test_d();
 	test_i();
 	test_u();
